@@ -14,7 +14,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         /* Стили для контента модального окна */
@@ -25,6 +25,7 @@
             width: 80%;
             max-width: 600px;
             background-color: #fff;
+            border-radius: 10px; /* Добавляем скругление углов */
         }
 
         /* Стили для кнопки закрытия */
@@ -46,18 +47,37 @@
             background-color: #14AABE; /* Добавляем цвет кнопки */
             color: #fff; /* Цвет текста */
             border: none;
-            border-radius: 5px;
+            border-radius: 10px; /* Увеличиваем скругление углов */
         }
 
         #openModalBtn:hover {
             background-color: #0E7D87; /* Цвет кнопки при наведении */
+        }
+
+        /* Стили для рамки с текстом и фоном */
+        .instruction-wrapper {
+            background-color: #F2F8FF; /* Цвет фона внутри рамки */
+            border: 1px solid #F2F8FF; /* Цвет рамки */
+            border-radius: 10px; /* Скругление углов рамки */
+            padding: 20px;
+            display: inline-block; /* Рамка будет по размеру чуть больше текста */
+            margin: 20px 0;
+        }
+
+        /* Стили для текста внутри рамки */
+        .instruction-text {
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
     <title>Modal Video Example</title>
 </head>
 <body>
 
-<button id="openModalBtn">Смотреть видео</button>
+<div class="instruction-wrapper">
+    <p class="instruction-text">На этой странице вы можете ознакомиться с текстовой инструкцией или посмотреть видеоинструкцию.</p>
+    <button id="openModalBtn">Смотреть видео</button>
+</div>
 
 <div id="videoModal" class="modal">
     <div class="modal-content">
