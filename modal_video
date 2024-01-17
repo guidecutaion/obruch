@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Скрыть модальное окно по умолчанию */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Стили для контента модального окна */
+        .modal-content {
+            position: relative;
+            margin: 10% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+        }
+
+        /* Стили для кнопки закрытия */
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+        }
+
+        /* Стили для кнопки открытия модального окна */
+        #openModalBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #14AABE; /* Добавляем цвет кнопки */
+            color: #fff; /* Цвет текста */
+            border: none;
+            border-radius: 5px;
+        }
+
+        #openModalBtn:hover {
+            background-color: #0E7D87; /* Цвет кнопки при наведении */
+        }
+    </style>
+    <title>Modal Video Example</title>
+</head>
+<body>
+
+<button id="openModalBtn">Смотреть видео</button>
+
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <video width="100%" height="auto" controls>
+            <source src="https://myschool.mos.ru/help/upload/video/Образовательный_учет._Сотрудник_ОО.mp4" type="video/mp4">
+            Ваш браузер не поддерживает тег video.
+        </video>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const openModalBtn = document.getElementById('openModalBtn');
+        const videoModal = document.getElementById('videoModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Открывать модальное окно при клике на кнопку
+        openModalBtn.addEventListener('click', function () {
+            videoModal.style.display = 'block';
+        });
+
+        // Закрывать модальное окно при клике на кнопку закрытия
+        closeModalBtn.addEventListener('click', function () {
+            videoModal.style.display = 'none';
+            // Пауза видео при закрытии модального окна
+            const videoPlayer = document.querySelector('#videoModal video');
+            videoPlayer.pause();
+        });
+
+        // Закрывать модальное окно при клике вне его области
+        window.addEventListener('click', function (event) {
+            if (event.target === videoModal) {
+                videoModal.style.display = 'none';
+                // Пауза видео при закрытии модального окна
+                const videoPlayer = document.querySelector('#videoModal video');
+                videoPlayer.pause();
+            }
+        });
+    });
+</script>
+</body>
+</html>
